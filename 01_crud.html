@@ -10,7 +10,9 @@
       <h1>포켓몬 등록</h1>
       <!-- label, flex, ... -->
       <form id="pokeRegister">
-        <input name="pokeName" />
+        <!-- 개발자 도구에서 편집 가능하므로 검증 로직을 백엔드에서도 포함해야함 (보안) -->
+        <!-- 폼에서 제출 검사 시 '검증'해달라 validation -->
+        <input name="pokeName" required />
         <button>등록</button>
       </form>
     </section>
@@ -24,6 +26,12 @@
       // click 아님! (이벤트 타입)
       form.addEventListener("submit", (event) => {
         event.preventDefault(); // 기본 폼 제출 비활성화
+        // 1. form - 변수 -> Form DOM => 이걸 넣어도 FormData 작동
+        // 2. event -> event.target (lexical scope 고려)
+        const formData = new FormData(event.target);
+        console.log(...formData);
+        console.log(formData.get("pokeName"));
+        // console.log(Object.fromEntries(formData));
         console.log("제출");
       });
     </script>
