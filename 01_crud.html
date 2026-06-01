@@ -20,11 +20,13 @@
       // DOM
       // querySelector (선택자 사용) & '#'' 아이디 사용
       const form = document.querySelector("#pokeRegister");
-      // https://mockapi.io/
 
-      // EventListener
+      // Event Listener
       // click 아님! (이벤트 타입)
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", formHandler);
+
+      // Event Handler (호이스팅 허용 - 함수 선언식)
+      function formHandler(event) {
         event.preventDefault(); // 기본 폼 제출 비활성화
         // 1. form - 변수 -> Form DOM => 이걸 넣어도 FormData 작동
         // 2. event -> event.target (lexical scope 고려)
@@ -32,8 +34,14 @@
         console.log(...formData);
         console.log(formData.get("pokeName"));
         // console.log(Object.fromEntries(formData));
+
+        // https://mockapi.io/
+        // 1. 경로 2. Promise
+        const apiURL = "https://6a1ce1e38858a003817c233f.mockapi.io/pokemon";
+        const response = fetch(apiURL);
+        console.log(response); // Promise {<pending>}
         console.log("제출");
-      });
+      }
     </script>
   </body>
 </html>
