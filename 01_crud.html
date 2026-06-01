@@ -38,9 +38,18 @@
         // https://mockapi.io/
         // 1. 경로 2. Promise
         const apiURL = "https://6a1ce1e38858a003817c233f.mockapi.io/pokemon";
-        const response = fetch(apiURL);
+        const response = fetch(apiURL)
+          // .then(console.log); // 응답 객체
+          //   .then((resp) => resp.text()) // 응답 body에 있는 데이터를 텍스트화
+          //   .then((text) => console.log(text));
+          .then((resp) => resp.json())
+          .then((json) => console.log(json))
+          ;
         console.log(response); // Promise {<pending>}
         console.log("제출");
+        // setTimeout(() => {
+        //   console.log(response);
+        // }, 2000);
       }
     </script>
   </body>
