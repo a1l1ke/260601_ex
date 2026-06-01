@@ -12,6 +12,8 @@ function searchFormHandler(event) {
   console.log("searchFormHandler 확인");
   const formData = new FormData(event.target);
   console.log("formData", ...formData);
+  const search = formData.get("search");
+  console.log("search", search);
 }
 
 // 데이터 조회
