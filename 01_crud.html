@@ -23,11 +23,13 @@
 
       // Event Listener
       // click 아님! (이벤트 타입)
+      document.addEventListener("DOMContentLoaded", domHandler);
       form.addEventListener("submit", formHandler);
 
       // Event Handler (호이스팅 허용 - 함수 선언식)
       // function formHandler(event) {
-      async function formHandler(event) { // 내부 await 쓰려고 하면
+      async function formHandler(event) {
+        // 내부 await 쓰려고 하면
         event.preventDefault(); // 기본 폼 제출 비활성화
         // 1. form - 변수 -> Form DOM => 이걸 넣어도 FormData 작동
         // 2. event -> event.target (lexical scope 고려)
@@ -46,6 +48,10 @@
         // setTimeout(() => {
         //   console.log(response);
         // }, 2000);
+      }
+
+      function domHandler() {
+        console.log("화면을 다시 그림");
       }
 
       // fetch
