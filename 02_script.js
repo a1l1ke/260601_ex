@@ -2,6 +2,7 @@ console.log("script 확인");
 
 // DOM
 const form = document.querySelector("#searchForm");
+const result = document.querySelector("#searchResult");
 
 // Event Listener
 form.addEventListener("submit", searchFormHandler);
@@ -13,6 +14,7 @@ async function searchFormHandler(event) {
   const search = getFormData(event).get("search");
   console.log("search", search);
   const pokeData = await getPokeData(search);
+  console.log("pokeData", pokeData);
 }
 
 function getFormData(event) {
@@ -37,8 +39,5 @@ async function getPokeData(search) {
   console.log("response", response);
   const data = response.data;
   console.log("data", data);
+  return data;
 }
-
-// 데이터 변형
-
-// 화면 그리기
