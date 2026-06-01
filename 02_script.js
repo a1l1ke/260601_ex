@@ -32,6 +32,11 @@ async function getPokeData(search) {
   console.log("getPokeData 확인");
   const apiURL = `https://pokeapi.co/api/v2/pokemon/${search}`;
   console.log("apiURL", apiURL);
+  // fetch/axios
+  const response = await axios.get(apiURL);
+  console.log("response", response);
+  const data = response.data;
+  console.log("data", data);
 }
 
 // 데이터 변형
