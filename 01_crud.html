@@ -15,11 +15,13 @@
         <input name="pokeName" required />
         <button>등록</button>
       </form>
+      <section id="pokeList"></section>
     </section>
     <script>
       // DOM
       // querySelector (선택자 사용) & '#'' 아이디 사용
       const form = document.querySelector("#pokeRegister");
+      const list = document.querySelector("#pokeList");
 
       // Event Listener
       // click 아님! (이벤트 타입)
@@ -52,6 +54,11 @@
 
       function domHandler() {
         console.log("화면을 다시 그림");
+
+        // 데이터 로드
+        const data = getData();
+        console.log("data", data);
+        // 데이터를 바탕으로 특정 돔 요소에 그리면.
       }
 
       // fetch
@@ -97,10 +104,11 @@
           // .then(console.log); // 응답 객체
           //   .then((resp) => resp.text()) // 응답 body에 있는 데이터를 텍스트화
           //   .then((text) => console.log(text));
-          .then((resp) => resp.json())
-          // console.log 대신에 dom 조작하는 함수가 들어가면?
-          .then((json) => console.log(json));
-        console.log(response); // Promise {<pending>}
+          .then((resp) => resp.json());
+        // console.log 대신에 dom 조작하는 함수가 들어가면?
+        //   .then((json) => console.log(json));
+        console.log("response", response); // Promise {<pending>}
+        return response;
       }
     </script>
   </body>
