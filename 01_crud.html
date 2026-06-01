@@ -52,11 +52,13 @@
         // }, 2000);
       }
 
-      function domHandler() {
+      //   function domHandler() {
+      async function domHandler() {
+        // 콜백으로 들어가므로 상위에 async는 필요 없음
         console.log("화면을 다시 그림");
 
         // 데이터 로드
-        const data = getData();
+        const data = await getData();
         console.log("data", data);
         // 데이터를 바탕으로 특정 돔 요소에 그리면.
       }
@@ -108,7 +110,7 @@
         // console.log 대신에 dom 조작하는 함수가 들어가면?
         //   .then((json) => console.log(json));
         console.log("response", response); // Promise {<pending>}
-        return response;
+        return response; // fetch -> promise => return을 하면 굳이 내부에 await를 넣을게 아니면 async를 안붙여도 된다
       }
     </script>
   </body>
