@@ -7,8 +7,11 @@ const form = document.querySelector("#searchForm");
 form.addEventListener("submit", searchFormHandler);
 
 // Event Handler
-function searchFormHandler() {
+function searchFormHandler(event) {
+  event.preventDefault();
   console.log("searchFormHandler 확인");
+  const formData = new FormData(event.target);
+  console.log("formData", ...formData);
 }
 
 // 데이터 조회
