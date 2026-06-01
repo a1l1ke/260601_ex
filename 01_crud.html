@@ -50,6 +50,9 @@
         // setTimeout(() => {
         //   console.log(response);
         // }, 2000);
+
+        // 다시 그려주기
+        drawPokeList(await getData());
       }
 
       //   function domHandler() {
@@ -118,6 +121,16 @@
       // Rendering
       function drawPokeList(data) {
         console.log("drawPokeList", data);
+        // 기존에 있는 것 지워야...
+        list.innerHTML = ""; // 가장 쉬운 방법
+        for (const v of data) {
+          //   console.log(v);
+          const item = document.createElement("p");
+          //   item.textContent = v; // Object
+          //   item.textContent = JSON.stringify(v);
+          item.textContent = v["name"];
+          list.append(item);
+        }
       }
     </script>
   </body>
